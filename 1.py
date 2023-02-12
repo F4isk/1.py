@@ -1,4 +1,4 @@
-import random
+
 import cv2
 import mediapipe as mp
 
@@ -132,3 +132,4 @@ with mp_pose.Pose(
     if cv2.waitKey(5) & 0xFF == 27:
       break
 cap.release()
+
