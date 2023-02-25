@@ -1,4 +1,3 @@
-
 import cv2
 import mediapipe as mp
 
@@ -92,26 +91,24 @@ with mp_pose.Pose(
         z1 = str(results.pose_landmarks.landmark[mp_pose.PoseLandmark.LEFT_WRIST].z)
         flag=1
         flag1=1
-        flag6=1
         flag5=1
+        flag7=1
     if flag1==1 and x[:3:]==x3[:3:] and y[:3:]==y3[:3:] :
         print("Правильно")
         flag1=2
-        flag5=1
-        if flag6==1:
-            playsound('correct.mp3')
-            flag6=2
+        playsound('correct.mp3')
+
     if flag1 == 1 and x[:3:] > x3[:3:]:
         print("Поставьте руки уже")
-        flag6=1
         if flag5==1:
             flag5=2
+            flag7=1
             playsound('narrow.mp3')
     if flag1 == 1 and x[:3:] < x3[:3:]:
         print("Руки шире")
-        flag6=1
-        if flag5==1:
-            flag5=2
+        if flag7==1:
+            flag5=1
+            flag7=2
             playsound('wider.mp3')
     if flag1 == 2 and x[:3:] == x3[:3:] and y[:3:] == y3[:3:] : #Верхняя точка
         flag1=3
